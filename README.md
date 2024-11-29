@@ -1,4 +1,4 @@
-![ts vs lam](https://github.com/user-attachments/assets/a89aed12-0e10-4958-8238-51b0e6a35bf0)Bellabeat
+Bellabeat
 
 This portfolio project is a comprehensive case study analyzing Bellabeat smart device usage data, completed as part of the Google Data Analytics course on Coursera. The primary objective is to understand user behavior, activity patterns, and sleep habits to derive actionable insights that can guide Bellabeat's marketing strategies. This analysis follows a structured approach covering data cleaning, exploratory data analysis (EDA), visualization, and statistical modeling using R. The goal is to uncover key trends in how Bellabeat users interact with their devices, ultimately providing data-driven recommendations to support the company’s growth in the wellness tech market for women.
 
@@ -555,4 +555,36 @@ Summmary of the observations for the "Total Steps vs Calories Burned" plot:
 4. Higher Step Counts and Calories Burned: For total steps above 15,000, there is a noticeable upward trend, with calories burned going up substantially, showing that high activity levels are associated with increased energy expenditure.
 
 This plot suggests a generally increasing trend in calories burned with more steps, with some leveling off at moderate step counts and a sharp increase at very high step counts.
+
+These plots below, explore the relationship between different levels of activity (very active, fairly active, lightly active, and sedentary minutes) and calories burned in the `daily_activity_steps` dataset. Each plot shows how time spent at each activity level correlates with calorie expenditure, with a scatter plot for individual observations and a trend line for the overall relationship.
+
+
+1. Very Active Minutes vs. Calories Burned:
+
+![vam vs cb](https://github.com/user-attachments/assets/fb9dc33c-285f-45ee-97f6-be39d07c6ea3)
+
+   - Observation: There is likely a strong positive relationship between very active minutes and calories burned. The more time spent in very active minutes, the more calories are burned, as shown by an upward trend in the scatter plot and trend line.
+   - Insight: This suggests that high-intensity activities significantly increase calorie expenditure.
+
+2. Fairly Active Minutes vs. Calories Burned:
+   
+![fam vs cb](https://github.com/user-attachments/assets/2b638f56-5d6a-45ea-bca3-06ae5d49d908)
+
+   - Observation: A moderate positive relationship likely exists between fairly active minutes and calories burned, where more fairly active minutes are associated with increased calorie burn, but less strongly than very active minutes.
+   - Insight: Fairly active minutes contribute to calorie burn, though not as effectively as more intense activity.
+
+
+3. Lightly Active Minutes vs. Calories Burned:
+   
+![lam vs cb](https://github.com/user-attachments/assets/542c1fb9-0caf-4d0e-ba5e-5f1d0258975f)
+
+   - Observation: There may be a weak or minimal positive relationship between lightly active minutes and calories burned. The trend line might show a slight increase in calories burned with lightly active minutes, but it is not as pronounced as with more active categories.
+   - Insight: Light activities contribute minimally to calorie burn, indicating that they have less impact on energy expenditure.
+
+
+4. Sedentary Minutes vs. Calories Burned:
+
+![sam vs cb](https://github.com/user-attachments/assets/c055880b-b2dd-49b1-94f9-a4cc80074594)
+    - Observation: Likely a very weak or even negative relationship, if any, between sedentary minutes and calories burned. The trend line might be flat or slightly downward, indicating minimal to no calorie burn during sedentary periods.
+   - Insight: Time spent sedentary has little to no contribution to calorie burning, highlighting the importance of active minutes for energy expenditure.
 
