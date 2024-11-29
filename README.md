@@ -480,3 +480,42 @@ The maximum sleep recorded is 796 minutes (about 13 hours), showing variation in
 Calories Burned:
 Average calories burned per hour is around 97. This metric provides context on general user activity levels and energy expenditure, which could be explored further to determine if it meets health recommendations.
 
+Insights for Bellabeat’s Marketing Strategy:
+
+These insights reveal key user behavior patterns that Bellabeat could target in its marketing strategy:
+
+Promoting Activity: Since many users are sedentary, Bellabeat could emphasize content encouraging more active lifestyles, possibly with reminders or challenges through the Bellabeat app.
+Encouraging Intense Activity: With low average very active minutes, Bellabeat could promote features that encourage users to add more high-intensity activity to their routines.
+Highlighting Sleep Health: With some users having insufficient sleep, Bellabeat could introduce resources or campaigns on the importance of quality sleep, aligning with its wellness mission.
+Targeting Caloric Awareness: Bellabeat could focus on educating users about caloric expenditure and how small changes in daily habits can improve their overall wellness.
+
+This analysis provides a foundation for Bellabeat’s targeted wellness recommendations and engagement strategies.
+
+Steps Taken
+
+In this analysis, I used the ggplot2 package to create a series of scatter plots that visualize the relationships between various levels of physical activity (such as very active, fairly active, lightly active, and sedentary minutes) and the total number of steps taken in a day. The goal was to understand how these activity levels correlate with step counts. By mapping the activity minutes to both color and size, I was able to easily identify patterns and trends, which will be useful for my analysis and recommendations. These visualizations provide valuable insights into activity levels, helping inform potential marketing strategies for fitness-related products.
+
+Here’s a summary of the observations for the "Very Active Minutes vs Total Steps" plot:
+
+![vam vs ts](https://github.com/user-attachments/assets/00154c05-6a53-4e00-8317-c6f61d996a2b)
+
+1. Higher Step Counts and Active Minutes: People with more total steps generally tend to have more active minutes, though this isn’t always consistent across all data points.
+
+2. Variation in Active Minutes: Even among high step counts, there’s variability in active minutes. Some individuals with similar step counts show a wide range of active minutes, suggesting different activity intensities.
+
+3. Concentration of Points: Most data points are clustered in the lower left corner of the plot, showing that many individuals have both low step counts and low active minutes.
+
+Here’s a summary of the observations for the "Fairly Active Minutes vs Total Steps" plot:
+
+1. Positive Relationship: As total steps increase, fairly active minutes also tend to increase, suggesting that people with higher step counts often spend more time being fairly active.
+
+2. Variation in Activity: There is a range of fairly active minutes even at similar step counts. For instance, individuals with around 10,000 steps show different levels of fairly active minutes, indicating varying activity intensity.
+
+3. Concentration of Points: Most data points are clustered toward the lower left corner, where total steps and fairly active minutes are both low, suggesting many individuals have both low step counts and low fairly active minutes.
+
+4. Higher Step Counts: At higher step counts (above 15,000), fairly active minutes continue to vary but generally stay under 150 minutes, showing that high step counts don’t necessarily mean consistently high fairly active minutes.
+
+This plot shows a general trend that higher step counts are often associated with more fairly active minutes, but individual variations lead to a wide range of active minutes at similar step levels.
+
+
+
