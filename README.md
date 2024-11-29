@@ -586,6 +586,6 @@ These plots below, explore the relationship between different levels of activity
 
 ![sam vs cb](https://github.com/user-attachments/assets/c055880b-b2dd-49b1-94f9-a4cc80074594)
 
-    - Observation: Likely a very weak or even negative relationship, if any, between sedentary minutes and calories burned. The trend line might be flat or slightly downward, indicating minimal to no calorie burn during sedentary periods.
+   - Observation: Likely a very weak or even negative relationship, if any, between sedentary minutes and calories burned. The trend line might be flat or slightly downward, indicating minimal to no calorie burn during sedentary periods.
    - Insight: Time spent sedentary has little to no contribution to calorie burning, highlighting the importance of active minutes for energy expenditure.
 
