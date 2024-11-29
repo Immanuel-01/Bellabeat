@@ -445,28 +445,38 @@ daily_activity %>%
   summary()
 
 Grouping and Summing Steps:
+
 group_by(id, veryactiveminutes, fairlyactiveminutes, lightlyactiveminutes, sedentaryminutes): You grouped the daily_activity_steps dataset by id and the different activity intensity columns (veryactiveminutes, fairlyactiveminutes, lightlyactiveminutes, and sedentaryminutes). This allows you to calculate total steps per user, taking into account each user’s breakdown of activity intensity.
 summarise(total_steps = sum(totalsteps)): Within each group, you calculated the sum of totalsteps, giving the total steps for each user and activity profile.
+
 Arranging by Total Steps:
 arrange(desc(total_steps)): You sorted the summarized data in descending order of total_steps, so users with the highest total steps appear first. This lets you quickly identify the most active users.
+
 Discoveries:
-From your summary analysis, you observed several key trends:
+From your summary analysis, i observed several key trends:
+
 Average Steps:
 The average total steps per day is 7,638, indicating the general daily activity level of users.
+
 Maximum Steps:
 The maximum steps recorded in a single day is 36,019, showing the highest level of activity for any user.
+
 Sedentary Behavior:
 Most participants are sedentary: The majority of users spend a significant amount of time in sedentary minutes, which could be an area for Bellabeat to target in its wellness campaigns.
 The maximum sedentary time recorded is 1,440 minutes, equivalent to a full day (24 hours), indicating at least one instance where a user was entirely inactive for a day.
+
 Very Active Minutes:
 The maximum number of very active minutes recorded in a day is 210, which reflects the upper limit of vigorous activity among users.
 The average very active minutes per day is 21.16, suggesting most users have low-to-moderate intense activity.
+
 Sedentary Minutes:
 The average sedentary minutes per day is 991.2, reinforcing the sedentary trend among users.
+
 Sleep Duration:
 Average sleep duration is approximately 418.4 minutes (about 7 hours), suggesting most users are getting adequate sleep, but not optimal.
 The minimum sleep recorded is 58 minutes, which is insufficient, highlighting possible sleep challenges for some users.
 The maximum sleep recorded is 796 minutes (about 13 hours), showing variation in sleep needs or habits.
+
 Calories Burned:
 Average calories burned per hour is around 97. This metric provides context on general user activity levels and energy expenditure, which could be explored further to determine if it meets health recommendations.
 
