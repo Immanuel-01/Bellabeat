@@ -1,4 +1,4 @@
-Bellabeat
+![ts vs lam](https://github.com/user-attachments/assets/a89aed12-0e10-4958-8238-51b0e6a35bf0)Bellabeat
 
 This portfolio project is a comprehensive case study analyzing Bellabeat smart device usage data, completed as part of the Google Data Analytics course on Coursera. The primary objective is to understand user behavior, activity patterns, and sleep habits to derive actionable insights that can guide Bellabeat's marketing strategies. This analysis follows a structured approach covering data cleaning, exploratory data analysis (EDA), visualization, and statistical modeling using R. The goal is to uncover key trends in how Bellabeat users interact with their devices, ultimately providing data-driven recommendations to support the company’s growth in the wellness tech market for women.
 
@@ -505,7 +505,7 @@ Here’s a summary of the observations for the "Very Active Minutes vs Total Ste
 
 3. Concentration of Points: Most data points are clustered in the lower left corner of the plot, showing that many individuals have both low step counts and low active minutes.
 
-Here’s a summary of the observations for the "Fairly Active Minutes vs Total Steps" plot:
+A summary of the observations for the "Fairly Active Minutes vs Total Steps" plot:
 
 1. Positive Relationship: As total steps increase, fairly active minutes also tend to increase, suggesting that people with higher step counts often spend more time being fairly active.
 
@@ -517,5 +517,42 @@ Here’s a summary of the observations for the "Fairly Active Minutes vs Total S
 
 This plot shows a general trend that higher step counts are often associated with more fairly active minutes, but individual variations lead to a wide range of active minutes at similar step levels.
 
+A summary of the observations for the "Total Steps vs Lightly Active Minutes" plot:
 
+![ts vs lam](https://github.com/user-attachments/assets/319f90ca-542a-47e7-ab40-a4f9462d8581)
+
+1. Curvilinear Trend: There’s a curved relationship between total steps and lightly active minutes. Lightly active minutes increase with total steps initially, then plateau around 10,000 steps, and slightly increase again at higher step counts.
+
+2. Plateau in Light Activity: Around the 10,000 steps mark, lightly active minutes reach a steady range between 200 to 300 minutes, showing that many individuals with moderate steps maintain similar levels of light activity.
+
+3. Higher Step Counts: For people with over 15,000 steps, lightly active minutes vary widely but mostly range from 200 to 400 minutes, with a slight upward trend, indicating that very high steps are associated with slightly more light activity.
+
+4. Variation in Activity Levels: At lower step counts (under 5,000), there’s a broader range of lightly active minutes, showing that individuals with lower steps have varying levels of light activity.
+
+Summmary of each observation for the "Total Steps vs Sedentary Minutes" plot:
+
+![sam vs ts](https://github.com/user-attachments/assets/6e3e2475-04ff-432e-a24f-146da2abdf83)
+
+1. Inverse Relationship: Higher total steps are generally associated with lower sedentary minutes, though the trend is not very strong.
+
+2. Concentration of Points: Most data points fall between 5,000 to 10,000 steps and 500 to 1,000 sedentary minutes, indicating this range is common among the observations.
+
+3. High Sedentary Minutes with Low Steps: Individuals with fewer steps tend to spend more time sedentary, with some reaching close to 1,500 sedentary minutes.
+
+4. Variability at Higher Step Counts: Among those with over 15,000 steps, sedentary minutes vary widely, though most stay under 1,000, showing that higher activity doesn’t always eliminate sedentary time.
+
+Summmary of the observations for the "Total Steps vs Calories Burned" plot:
+
+![ts vs cal burned](https://github.com/user-attachments/assets/d63ff4b5-27ac-4baf-a80e-afe4239960a4)
+
+
+1. Positive Relationship: There is a positive relationship between total steps and calories burned, meaning that as the number of steps increases, the calories burned also tend to increase.
+
+2. Plateau and Increase: Calories burned initially increase with steps up to around 10,000 steps, where they plateau slightly. Beyond this point, calories burned start to increase more significantly with higher step counts.
+
+3. Wide Variation in Calories Burned: At similar step counts, especially around 10,000 steps, there is a wide range of calories burned, indicating that factors other than steps (such as individual metabolism or activity intensity) may affect calorie expenditure.
+
+4. Higher Step Counts and Calories Burned: For total steps above 15,000, there is a noticeable upward trend, with calories burned going up substantially, showing that high activity levels are associated with increased energy expenditure.
+
+This plot suggests a generally increasing trend in calories burned with more steps, with some leveling off at moderate step counts and a sharp increase at very high step counts.
 
