@@ -180,12 +180,12 @@ tibble [22,099 × 3] (S3: tbl_df/tbl/data.frame)
  $ id       : num [1:22099] 1.5e+09 1.5e+09 1.5e+09 1.5e+09 1.5e+09 ...
  $ date_time: POSIXct[1:22099], format: "2016-04-12 00:00:00" "2016-04-12 01:00:00" "2016-04-12 02:00:00" ...
  $ calories : num [1:22099] 81 61 59 47 48 48 48 47 68 141 ...
-> 
+
 > str(hourly_intensities)
 tibble [23 × 2] (S3: tbl_df/tbl/data.frame)
  $ time                   : chr [1:23] "01:00:00" "02:00:00" "03:00:00" "04:00:00" ...
  $ mean_hourly_intensities: num [1:23] 1.419 1.044 0.444 0.633 4.951 ...
-> 
+
 > str(sleep_day)
 tibble [410 × 5] (S3: tbl_df/tbl/data.frame)
  $ id                : num [1:410] 1.5e+09 1.5e+09 1.5e+09 1.5e+09 1.5e+09 ...
@@ -193,7 +193,7 @@ tibble [410 × 5] (S3: tbl_df/tbl/data.frame)
  $ totalsleeprecords : num [1:410] 1 2 1 2 1 1 1 1 1 1 ...
  $ totalminutesasleep: num [1:410] 327 384 412 340 700 304 360 325 361 430 ...
  $ totaltimeinbed    : num [1:410] 346 407 442 367 712 320 377 364 384 449 ...
-> 
+ 
 > str(hourly_steps)
 tibble [23 × 2] (S3: tbl_df/tbl/data.frame)
  $ time            : chr [1:23] "01:00:00" "02:00:00" "03:00:00" "04:00:00" ...
@@ -589,3 +589,78 @@ These plots below, explore the relationship between different levels of activity
    - Observation: Likely a very weak or even negative relationship, if any, between sedentary minutes and calories burned. The trend line might be flat or slightly downward, indicating minimal to no calorie burn during sedentary periods.
    - Insight: Time spent sedentary has little to no contribution to calorie burning, highlighting the importance of active minutes for energy expenditure.
 
+An Overall Summary
+These plots illustrate that calorie expenditure increases with the intensity of activity. Very active and fairly active minutes contribute more substantially to calories burned, while lightly active and sedentary minutes show much less impact on calorie burn. This helps prioritize more intense activities for higher energy expenditure.
+
+I proceeded to see correlations. These correlation values measure the strength and direction of the relationship between total steps and different activity levels (very active, fairly active, lightly active, and sedentary minutes) in the `daily_activity_steps` dataset.
+
+Correlation between very active minutes and calories burned
+
+cor_very_active_calories <- cor(daily_activity_steps$veryactiveminutes, daily_activity_steps$calories, use = "complete.obs")
+print(cor_very_active_calories)
+
+ Total Steps and Very Active Minutes (`0.5417`):
+   - This positive correlation suggests a moderate relationship between total steps and very active minutes. Higher total steps tend to be associated with more very active minutes, indicating that those who walk more also engage in more intense activities.
+
+
+Correlation between fairly active minutes and calories burned
+
+cor_fairly_active_calories <- cor(daily_activity_steps$fairlyactiveminutes, daily_activity_steps$calories, use = "complete.obs")
+print(cor_fairly_active_calories)
+
+Total Steps and Fairly Active Minutes (`0.5715`):
+   - With a slightly stronger correlation than very active minutes, fairly active minutes also show a moderate positive relationship with total steps. This suggests that fairly active minutes contribute well to the overall step count and are slightly more closely related to total steps than very active minutes.
+
+Correlation between lightly active minutes and calories burned
+
+Total Steps and Lightly Active Minutes (`0.4111`):
+
+cor_lightly_active_calories <- cor(daily_activity_steps$lightlyactiveminutes, daily_activity_steps$calories, use = "complete.obs")
+print(cor_lightly_active_calories)
+
+   - The positive correlation here is weaker, showing a modest relationship. While lightly active minutes do contribute to total steps, they are not as closely linked to step count as the more active categories.
+     
+cor(daily_activity_steps$totalsteps, daily_activity_steps$sedentaryminutes, use = "complete.obs")
+print(cor_sedentary_minutes
+Total Steps and Sedentary Minutes (`-0.2673`):
+   - This negative correlation indicates an inverse relationship: as total steps increase, sedentary minutes tend to decrease. This result suggests that higher step counts are associated with less sedentary time, as people who are more active spend less time sitting or inactive.
+
+Overall Insights:
+The positive correlations with active minutes confirm that higher total steps are achieved through increased activity, particularly in fairly and very active minutes. The negative correlation with sedentary minutes reinforces that more active individuals spend less time inactive
+
+The correlation between total steps and calories burned in the daily_activity_steps dataset is 0.3708, which indicates a moderate positive relationship.
+
+Summary of Findings:
+
+Positive Correlation (0.3708): This value suggests that as the number of steps increases, the calories burned also tend to increase, but the relationship is not particularly strong. While there is a positive association, it’s relatively moderate, meaning that while steps contribute to calorie burn, they are not the only factor.
+Implication: This moderate correlation implies that other factors—such as the intensity of activity (like very active or fairly active minutes), individual metabolism, or body composition—may also play significant roles in determining calories burned. Simply increasing step count alone may not result in a substantial increase in calories burned without incorporating higher-intensity activities.
+
+very Active Minutes and Calories Burned (0.6207):
+This is a relatively strong positive correlation, suggesting that there is a solid link between very active minutes and calories burned. The more time spent in high-intensity activity, the more calories are likely burned. This makes sense because intense activities generally require more energy.
+
+Fairly Active Minutes and Calories Burned (0.1818):
+This weak positive correlation indicates that while there is a slight increase in calories burned with fairly active minutes, the relationship is minimal. Fairly active minutes have some impact on calorie burn, but not as significantly as very active minutes.
+
+Lightly Active Minutes and Calories Burned (0.0432):
+This very weak positive correlation suggests almost no relationship between lightly active minutes and calories burned. Light activities contribute very little to calorie expenditure, confirming that higher calorie burn requires more intense activity.
+
+Then i proceeded to see the daily steps taken by the users
+
+ggplot(weekday_steps, aes(x=weekday, y=daily_steps, fill = weekday)) +
+  geom_col() +
+  geom_hline(yintercept = 7500) +
+  labs(title = "Total Steps Taken Per Day")
+
+  ![total steps per day](https://github.com/user-attachments/assets/53f08d36-b342-4c18-9709-665e4388e766)
+
+  weekday_sleep <- daily_activity_steps %>% 
+  mutate(weekday = weekdays(date)) 
+  weekday_sleep$weekday <- ordered(weekday_sleep$weekday, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+  
+weekday_sleep <- weekday_sleep %>% 
+  group_by(weekday) %>% 
+  summarize(daily_sleep = mean(totalminutesasleep))
+
+Daily steps and daily sleep graph
+
+The graphs indicate that users generally do not achieve the recommended 8 hours of sleep. They do, however, meet the suggested daily step count of 7,500—except on Sundays and tuedays and saturdays being the days most steps are taken.
