@@ -653,6 +653,8 @@ ggplot(weekday_steps, aes(x=weekday, y=daily_steps, fill = weekday)) +
 
   ![total steps per day](https://github.com/user-attachments/assets/53f08d36-b342-4c18-9709-665e4388e766)
 
+  ![tms vs weekday](https://github.com/user-attachments/assets/eed71b3b-382f-4cd3-b042-f2c28dd9c454)
+
   weekday_sleep <- daily_activity_steps %>% 
   mutate(weekday = weekdays(date)) 
   weekday_sleep$weekday <- ordered(weekday_sleep$weekday, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
@@ -664,3 +666,66 @@ weekday_sleep <- weekday_sleep %>%
 Daily steps and daily sleep graph
 
 The graphs indicate that users generally do not achieve the recommended 8 hours of sleep. They do, however, meet the suggested daily step count of 7,500—except on Sundays and tuedays and saturdays being the days most steps are taken.
+
+hourly_intensities <- hourly_intensities %>% 
+  separate(date_time, into = c("date", "time"), sep = " ")
+
+hourly_intensities <- hourly_intensities %>% 
+  group_by(time) %>% 
+  drop_na() %>% 
+  summarise(mean_hourly_intensities = mean(totalintensity))
+
+ggplot(hourly_intensities, aes(x=time, y=mean_hourly_intensities, fill = time)) +
+  geom_col() + 
+  labs(title = "Average Intensities vs Time")
+  
+![avg int](https://github.com/user-attachments/assets/1f4d2bd0-3829-47d0-8e08-81033bde8837)
+
+This code processes and visualizes the average intensity of activity per hour. Here’s a summary of what’s happening:
+
+1. Splitting Date and Time: First, I separated the `date_time` column into two columns, `date` and `time`, so that each hour could be analyzed independently.
+
+2. Grouping by Time: Next, I grouped the data by `time` (hour) to examine the intensity of activities for each hour across the dataset.
+
+3. Removing Missing Values: Using `drop_na()`, I filtered out any rows with missing values, ensuring the average calculation is based on complete data only.
+
+4. Calculating Mean Intensity: The `summarise` function calculates the average `totalintensity` for each hour, creating a new column `mean_hourly_intensities` to represent the hourly intensity levels.
+
+5. Creating a Visualization: I then used `ggplot` to create a bar chart, with `time` on the x-axis and `mean_hourly_intensities` on the y-axis. Each bar represents the average intensity level for a specific hour, and I added color distinctions for each hour using the `fill = time` argument. The chart is titled "Average Intensities vs Time" to clearly convey the content.
+
+
+I discovered that users are most active between 5 a.m. and 10 p.m., with peak activity occurring between 5 p.m. and 7 p.m. This likely reflects a post-work routine, where people head to the gym or go for a walk. We could leverage this timeframe to send reminders or motivational prompts through the Bellabeat app, encouraging users to go for a run or walk.
+
+### Purpose
+This visualization provides a clear, hour-by-hour view of activity intensity, highlighting when users tend to be more or less active throughout the day. It’s a useful way to spot trends in daily activity intensity at a glance.
+
+daily_calories <- hourly_calories %>% 
+  separate(date_time, into = c("date", "time"), sep = " ")
+
+daily_calories <- daily_calories %>%
+  group_by(time) %>% 
+  drop_na() %>% 
+  summarise(mean_total_calories = mean(calories))
+
+ggplot(daily_calories, aes(x=time, y=mean_total_calories, fill = time)) +
+  geom_col() +
+  labs(title = "Average Calories Burned Per Hour")
+
+![avg cal](https://github.com/user-attachments/assets/15fba120-4f69-4e5c-a16e-85e7a11b0c7f)
+
+This code processes and visualizes average calories burned per hour across the dataset. Here’s a step-by-step summary:
+
+1. Splitting Date and Time: The `separate` function splits the `date_time` column into two separate columns, `date` and `time`, making it easier to focus specifically on the time for hourly analysis.
+
+2. Grouping by Time: After separating the columns, the data is grouped by `time` (hour) to calculate average calories burned at each hour across all days.
+
+3. Removing Missing Values: `drop_na()` removes any rows with missing calorie data, ensuring the analysis is based only on complete records.
+
+4. Calculating Mean Calories: The `summarise` function computes the average calories burned (`mean_total_calories`) for each hour.
+
+5. Plotting the Data: Using `ggplot`, a bar chart is created with `time` on the x-axis and `mean_total_calories` on the y-axis. The bars are filled by the `time` variable, giving a color distinction for each hour, and the title "Average Calories Burned Per Hour" provides context for the visualization.
+
+ Purpose
+This code helps identify hourly patterns in calorie burn, showing which times of day have higher or lower average calorie expenditures.
+
+
