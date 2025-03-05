@@ -1,0 +1,148 @@
+# **Bellabeat Smart Device Analysis – Google Data Analytics Capstone Project**
+
+## **Overview**
+
+This case study analyzes **Bellabeat smart device usage** to understand user behavior, activity patterns, and sleep habits. The objective is to derive **data-driven marketing insights** that can enhance **customer engagement and growth**. The analysis follows a structured approach using **R for data cleaning, exploratory data analysis (EDA), visualization, and statistical modeling**.
+
+## **Project Details**
+
+- **Company:** Bellabeat – a wellness tech company for women
+- **Role:** Junior Data Analyst, Marketing Analytics Team
+- **Objective:** Analyze smart device usage data to uncover trends and provide strategic marketing recommendations for Bellabeat.
+
+## **Scenario**
+
+Bellabeat is a **small but growing tech company** that produces **women’s health-focused wearable devices**, including:
+- **Leaf (Wearable Tracker)** – Tracks activity, sleep, and stress.
+- **Time (Wellness Watch)** – Smartwatch-style fitness tracker.
+- **Spring (Smart Water Bottle)** – Monitors hydration levels.
+- **Bellabeat App** – Connects to all devices and provides insights.
+
+The **goal** is to analyze **user activity data from non-Bellabeat devices (Fitbit dataset)** to identify trends and **optimize Bellabeat’s marketing strategies**.
+
+---
+
+## **Research Questions (ASK Phase)**
+
+1. What trends exist in smart device usage?
+2. How do these trends apply to Bellabeat customers?
+3. How can these insights influence Bellabeat’s marketing strategy?
+
+---
+
+## **Dataset & Limitations**
+
+### **Dataset Used:** Fitbit Fitness Tracker Dataset (Kaggle)
+- **Timeframe:** 31 days (March–April 2016)
+- **Sample Size:** 30 Fitbit users
+- **Data Points Tracked:**
+  - **Daily activity metrics** – Steps, active minutes, calories burned
+  - **Sleep data** – Duration, efficiency, patterns
+  - **Hourly movement data** – Steps, calories, and intensity
+
+### **Limitations**
+- **Small sample size (30 users)** – Limited generalizability.
+- **Lack of demographic data** – No gender, age, or location details.
+- **Short data collection period (31 days)** – No seasonal trend insights.
+
+---
+
+## **Methodology (PROCESS Phase)**
+
+### **1. Data Cleaning**
+- Removed **duplicates and missing values**.
+- Standardized **date/time formats**.
+- Renamed columns for **consistency**.
+- Merged datasets to create **daily_activity_steps dataset**.
+
+### **2. Exploratory Data Analysis (EDA)**
+- **Summary statistics** on user behavior.
+- **Visualizations** (scatter plots, bar charts, histograms).
+- **Correlation analysis** to find relationships between:
+  - **Activity levels & calorie burn**
+  - **Step counts & sedentary behavior**
+  - **Sleep duration & movement**
+
+### **3. Statistical Modeling**
+- **Calculated correlations** between:
+  - Very active minutes and calories burned (**strong correlation: 0.62**)
+  - Total steps and calories burned (**moderate correlation: 0.37**)
+  - Sedentary minutes and steps (**negative correlation: -0.26**)
+
+---
+
+## **Key Insights & Findings**
+
+### **1. Activity Trends**
+- **Most users are sedentary:** Average **991 minutes/day (16.5 hours)**.
+- **Average steps per day:** **7,638 steps** (meets the 7,500 daily step recommendation).
+- **Peak active hours:** **5 PM – 7 PM** (post-work exercise).
+- **Users with higher total steps tend to engage in more intense activity.**
+
+### **2. Sleep Patterns**
+- **Average sleep duration:** **~7 hours**, slightly below the recommended **8 hours**.
+- **Some users have sleep deficits** (minimum recorded: **58 minutes**).
+- **Weekends (Saturday & Sunday) have lower step counts**, potentially due to **rest days.**
+
+### **3. Calories Burned**
+- **Higher steps = higher calories burned**, but only at high-intensity activity.
+- **Light activity (walking) contributes little to calorie burn.**
+- **Most calories are burned in the evening (5 PM – 8 PM).**
+
+---
+
+## **Marketing Recommendations for Bellabeat**
+
+1. **Encourage More Activity**
+   - Create **step challenges** and **active reminders** via the Bellabeat app.
+   - Use **push notifications** in peak hours (**5 PM – 7 PM**) to motivate workouts.
+
+2. **Promote Sleep & Recovery**
+   - Market **Bellabeat sleep tracking** as a **feature for better wellness**.
+   - Provide **personalized sleep recommendations** via the Bellabeat app.
+
+3. **Hydration & Wellness Education**
+   - Promote the **Spring smart water bottle** as a hydration coach.
+   - Educate users on **the impact of hydration on energy and calorie burn**.
+
+4. **Optimize Digital Marketing**
+   - Focus on **social media ads** targeting **evening fitness users**.
+   - Create **content around the benefits of high-intensity exercise**.
+
+---
+
+## **How to Use This Analysis**
+
+### **Prerequisites**
+- Install **R and RStudio**.
+- Install required R packages:
+  ```r
+  install.packages(c("tidyverse", "lubridate", "ggplot2", "janitor", "skimr"))
+  ```
+
+### **Run Data Cleaning & Analysis**
+1. Load data:
+   ```r
+   daily_activity <- read_csv("dailyActivity_merged.csv")
+   ```
+2. Clean & preprocess:
+   ```r
+   daily_activity <- daily_activity %>%
+      distinct() %>%
+      drop_na() %>%
+      rename_with(tolower)
+   ```
+3. Visualize trends:
+   ```r
+   ggplot(daily_activity, aes(x = totalsteps, y = calories)) +
+      geom_point() + geom_smooth(method = "lm")
+   ```
+
+---
+
+## **Conclusion**
+
+This analysis provides **valuable insights into smart device user behavior**. The findings suggest that Bellabeat can **improve user engagement through marketing strategies focused on activity encouragement, sleep tracking, and hydration awareness**.
+
+By leveraging **data-driven recommendations**, Bellabeat can **strengthen its market position** in the women’s wellness tech industry.
+
